@@ -11,18 +11,12 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser #if theere is any unauthoriz
 
 # Create Virual Env
 python -m venv .venv_bikerenting
-$@2025@January
-
-
-
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser #if theere is any unauthorized exception
-.venv_bike_sharing_api\Scripts\Activate.ps1
-
-Get-Command python
-
-python -m pip install --upgrade pip
-echo "*" > .venv/.gitignore
 
 #Install FastAPI
 pip install "fastapi[standard]"
 fastapi dev main.py
+
+#
+docker images
+docker pull <image-name>
+docker run -d --name my-nginx -p 8080:80 nginx
