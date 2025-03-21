@@ -1,0 +1,127 @@
+# Package Overview
+package_name: bikerent_model
+
+# Data Files
+training_data_file: bike-sharing-dataset.csv
+test_data_file: test.csv
+
+# Variables
+# The variable we are attempting to predict (Survival)
+target: cnt
+
+pipeline_name: bikerent_model
+pipeline_save_file: bikerent_model_output_v
+
+features:      # final features to be use
+  - season
+  - hr
+  - holiday 
+  - weekday
+  - workingday
+  - weathersit
+  - windspeed
+  - temp  
+  - atemp   
+  - hum   
+  - year
+  - month    
+
+numerical_features:
+  - temp
+  - atemp
+  - hum
+  - windspeed
+
+unused_fields:  # Features to drop before pipeline
+  - dteday
+  - casual
+  - registered
+  
+
+# Features inside processing pipeline
+
+weathersit_var: weathersit  # first imputatation , then --> Mappeing
+  
+year_var: year
+
+month_var: month
+
+season_var: season 
+
+holiday_var: holiday
+
+workingday_var: workingday
+
+weekday_var: weekday
+
+hr_var: hr
+
+weathersit_mappings:
+  Mist: 0
+  Clear: 1
+  Light Rain: 2
+  Heavy Rain: 3
+
+year_mappings:
+  2011: 0
+  2012: 1
+  
+workingday_mappings:
+  Yes: 1
+  No: 0
+
+season_mappings:
+  winter: 0
+  fall: 1
+  spring: 2 
+  summer: 3
+
+hr_mappings:
+  6am: 0
+  4am: 1
+  11am: 2
+  7am: 3
+  12pm: 4
+  9am: 5
+  2am: 6
+  4pm: 7
+  8am: 8
+  1am: 9
+  3am: 10
+  1pm: 11
+  10pm: 12
+  7pm: 13
+  8pm: 14
+  2pm: 15
+  5pm: 16
+  5am: 17
+  3pm: 18
+  9pm: 19
+  10am: 20
+  6pm: 21
+  12am: 22
+  11pm: 23
+
+month_mappings:
+  January: 0
+  February: 1
+  March: 2
+  April: 3
+  May: 4
+  June: 5
+  July: 6
+  August: 7
+  September: 8
+  October: 9
+  November: 10
+  December: 11
+
+# set train/test split
+test_size: 0.20
+
+# to set the random seed
+random_state: 42
+# alogrithm parameters
+n_estimators: 150
+max_depth: 5
+
