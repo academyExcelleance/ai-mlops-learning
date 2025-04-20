@@ -44,7 +44,7 @@ jobs:
 
       - name: Train the used car model and create the pkl file
         run: |
-          python ./Module6/LongQuiz-PartB/used_car_price_prediction/usedcar_model/train_pipeline.py
+          python Module6/LongQuiz-PartB/used_car_price_prediction/usedcar_model/train_pipeline.py
 
     #   - name: Run pytest
     #     run: |
@@ -88,4 +88,4 @@ jobs:
           context: ./usedcar_api
           file: ./Module6/LongQuiz-PartB/used_car_price_prediction//usedcar_api/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/usedcar_api:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/usedcar_api:latest  
