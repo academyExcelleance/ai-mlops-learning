@@ -62,7 +62,7 @@ def save_pipeline(*, pipeline_to_persist: Pipeline) -> None:
     print(f"save_file_name: {save_file_name}")
     print(f"save_path: {save_path}")
     print(f"saveTRAINED_MODEL_DIR_path: {TRAINED_MODEL_DIR}")
-    remove_old_pipelines(files_to_keep=[save_file_name])
+    #remove_old_pipelines(files_to_keep=[save_file_name])
     joblib.dump(pipeline_to_persist, save_path)
     print("Model/pipeline saved successfully.")
 
