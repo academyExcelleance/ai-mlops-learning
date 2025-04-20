@@ -1,0 +1,28 @@
+name: CD for Used Car API
+
+on:
+  workflow_run:
+    workflows: ["CI for Used Card API"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Install SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to EC2
+        run: |
+          ssh ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} '
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/usedcar_api:latest
+            sudo docker stop bike-share || true
+            sudo docker rm bike-share  || true
+            sudo docker run -d --name usedcar -p 80:8000 ${{ secrets.DOCKERHUB_USERNAME }}/usedcar_api:latest
+          '
