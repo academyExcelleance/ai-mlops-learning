@@ -76,6 +76,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: Module6/LongQuiz/used_car_price_prediction/usedcar_api
-          file: Module6/LongQuiz/used_car_price_prediction//usedcar_api/Dockerfile
+          file: Module6/LongQuiz/used_car_price_prediction/usedcar_api/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/usedcar_api:latest  
