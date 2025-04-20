@@ -22,7 +22,7 @@ CONFIG_FILE_PATH = PACKAGE_ROOT / "config.yml"
 DATASET_DIR = PACKAGE_ROOT / "datasets"
 TRAINED_MODEL_DIR = PACKAGE_ROOT / "trained_models"
 
-print(" Initial TRAINED_MODEL_DIR: {TRAINED_MODEL_DIR}")
+print(f" Initial TRAINED_MODEL_DIR: {TRAINED_MODEL_DIR}")
 
 class AppConfig(BaseModel):
     """
