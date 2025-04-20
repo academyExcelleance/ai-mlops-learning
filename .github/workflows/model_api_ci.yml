@@ -70,12 +70,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
            name: usedcar_model-0.0.1-py3-none-any.whl  
-           path: ./Module6/LongQuiz/used_car_price_prediction/used_car_price_prediction/usedcar_api
+           path: Module6/LongQuiz/used_car_price_prediction/usedcar_api
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
           context: Module6/LongQuiz/used_car_price_prediction/usedcar_api
-          file: ./Module6/LongQuiz/used_car_price_prediction//usedcar_api/Dockerfile
+          file: Module6/LongQuiz/used_car_price_prediction//usedcar_api/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/usedcar_api:latest  
